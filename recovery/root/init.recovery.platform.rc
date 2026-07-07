@@ -54,6 +54,7 @@ on property:recovery.service=1
     start gatekeeper-1-0
     start keystore2
     start keymaster-5-0
+    start guardianangle
     start vold
 
 service vendor.boot-hal-1-2 /vendor/bin/hw/android.hardware.boot@1.2-service
@@ -78,8 +79,20 @@ service keymaster-4-0 /vendor/bin/android.hardware.keymaster@4.0-service
 
 service keymaster-5-0 /vendor/bin/hw/android.hardware.security.keymint-service.trustonic
     disabled
+    interface android.hardware.keymaster@4.0::IKeymasterDevice default
+    interface android.hardware.keymaster@4.1::IKeymasterDevice default
     user root
     group root drmrpc
+    seclabel u:r:recovery:s0
+
+service wait_for_keymaster /system/bin/wait_for_keymaster
+    disabled
+    user root
+    seclabel u:r:recovery:s0
+
+service guardianangle /system/bin/guardianangle
+    disabled
+    user root
     seclabel u:r:recovery:s0
 
 service gatekeeper-1-0 /vendor/bin/android.hardware.gatekeeper@1.0-service
@@ -131,18 +144,16 @@ service health-hal-2-0 /vendor/bin/hw/android.hardware.health@2.0-service
 service mobicore /vendor/bin/mcDriverDaemon --P1 /mnt/vendor/persist/mcRegistry \
 	-r /vendor/app/mcRegistry/06090000000000000000000000000000.drbin \
 	-r /vendor/app/mcRegistry/020f0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/05120000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/020b0000000000000000000000000000.drbin \
+	-r /vendor/app/mcRegistry/05120000000000000000000000000001.drbin \
 	-r /vendor/app/mcRegistry/05070000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/030b0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/03100000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/030c0000000000000000000000000000.drbin \
 	-r /vendor/app/mcRegistry/40188311faf343488db888ad39496f9a.drbin \
-	-r /vendor/app/mcRegistry/090b0000000000000000000000000000.drbin \
-	-r /vendor/app/mcRegistry/0f5eed3c3b5a47afacca69a84bf0efad.drbin \
-	-r /vendor/app/mcRegistry/07060000000000000000000000007169.drbin \
-	-r /vendor/app/mcRegistry/07407000000000000000000000000000.drbin \
-        -r /vendor/app/mcRegistry/5020170115e016302017012521300000.drbin
+	-r /vendor/app/mcRegistry/5020170115e016302017012521300000.drbin \
+	-r /vendor/app/mcRegistry/035c0000000000000000000000000000.drbin \
+	-r /vendor/app/mcRegistry/037c0000000000000000000000000000.drbin \
+	-r /vendor/app/mcRegistry/07150000000000000000000000000000.drbin \
+	-r /vendor/app/mcRegistry/08050000000000000000000000003419.drbin \
+	-r /vendor/app/mcRegistry/62d690ff530e46cfb472ec52c4da3773.drbin \
+	-r /vendor/app/mcRegistry/07170000000000000000000000000000.drbin
     seclabel u:r:recovery:s0
     user root
     group root

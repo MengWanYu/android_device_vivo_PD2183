@@ -45,3 +45,63 @@ RECOVERY_ROOT_FILES := \
     device/vivo/PD2183/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/servicemanager.recovery.rc
 
 PRODUCT_COPY_FILES += $(RECOVERY_ROOT_FILES)
+
+# === Decryption stack (from official 13.1.10.3 recovery) ===
+# KeyMint + Gatekeeper + Trustonic TEE + Keystore2 + vivo guardianangle
+RECOVERY_CRYPTO_FILES := \
+    device/vivo/PD2183/recovery/root/system/bin/servicemanager:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/servicemanager \
+    device/vivo/PD2183/recovery/root/system/bin/hwservicemanager:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/hwservicemanager \
+    device/vivo/PD2183/recovery/root/system/bin/keystore2:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/keystore2 \
+    device/vivo/PD2183/recovery/root/system/bin/wait_for_keymaster:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/wait_for_keymaster \
+    device/vivo/PD2183/recovery/root/system/bin/guardianangle:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/guardianangle \
+    device/vivo/PD2183/recovery/root/vendor/bin/vndservicemanager:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/bin/vndservicemanager \
+    device/vivo/PD2183/recovery/root/vendor/bin/mcDriverDaemon:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/bin/mcDriverDaemon \
+    device/vivo/PD2183/recovery/root/vendor/bin/android.hardware.gatekeeper@1.0-service:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/bin/android.hardware.gatekeeper@1.0-service \
+    device/vivo/PD2183/recovery/root/vendor/bin/hw/android.hardware.security.keymint-service.trustonic:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/bin/hw/android.hardware.security.keymint-service.trustonic \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeymint.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymint.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeymint_support.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymint_support.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeymaster4support.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymaster4support.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeymaster4_1support.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymaster4_1support.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeymaster_messages.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymaster_messages.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeymaster_portable.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymaster_portable.so \
+    device/vivo/PD2183/recovery/root/system/lib64/lib_android_keymaster_keymint_utils.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/lib_android_keymaster_keymint_utils.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libpuresoftkeymasterdevice.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libpuresoftkeymasterdevice.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libsoftkeymasterdevice.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libsoftkeymasterdevice.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.hardware.keymaster@3.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.hardware.keymaster@3.0.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.hardware.keymaster@4.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.hardware.keymaster@4.0.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.hardware.keymaster@4.1.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.hardware.keymaster@4.1.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.hardware.security.keymint-V1-ndk_platform.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.hardware.security.keymint-V1-ndk_platform.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.system.keystore2-V1-ndk_platform.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.system.keystore2-V1-ndk_platform.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore2_crypto.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore2_crypto.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore2_apc_compat.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore2_apc_compat.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore2_aaid.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore2_aaid.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore2_vintf_cpp.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore2_vintf_cpp.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore-attestation-application-id.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-attestation-application-id.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore-engine.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-engine.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore-engine-wifi-hidl.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-engine-wifi-hidl.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libkeystore-wifi-hidl.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-wifi-hidl.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libgatekeeper.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.hardware.gatekeeper@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.hardware.gatekeeper@1.0.so \
+    device/vivo/PD2183/recovery/root/system/lib64/android.system.wifi.keystore@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.system.wifi.keystore@1.0.so \
+    device/vivo/PD2183/recovery/root/system/lib64/libvivogatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libvivogatekeeper.so \
+    device/vivo/PD2183/recovery/root/vendor/lib64/android.hardware.gatekeeper@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/android.hardware.gatekeeper@1.0.so \
+    device/vivo/PD2183/recovery/root/vendor/lib64/libkeymaster4.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/libkeymaster4.so \
+    device/vivo/PD2183/recovery/root/vendor/lib64/libkeymaster41.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/libkeymaster41.so \
+    device/vivo/PD2183/recovery/root/vendor/lib64/vendor.vivo.hardware.wifi.keystore@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/vendor.vivo.hardware.wifi.keystore@1.0.so \
+    device/vivo/PD2183/recovery/root/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so \
+    device/vivo/PD2183/recovery/root/vendor/lib64/hw/libMcGatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/libMcGatekeeper.so \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/06090000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/06090000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/020f0000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/020f0000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/05120000000000000000000000000001.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/05120000000000000000000000000001.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/05070000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/05070000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/40188311faf343488db888ad39496f9a.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/40188311faf343488db888ad39496f9a.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/5020170115e016302017012521300000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/5020170115e016302017012521300000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/035c0000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/035c0000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/037c0000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/037c0000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/07150000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/07150000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/08050000000000000000000000003419.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/08050000000000000000000000003419.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/62d690ff530e46cfb472ec52c4da3773.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/62d690ff530e46cfb472ec52c4da3773.drbin \
+    device/vivo/PD2183/recovery/root/vendor/app/mcRegistry/07170000000000000000000000000000.drbin:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/app/mcRegistry/07170000000000000000000000000000.drbin \
+    device/vivo/PD2183/recovery/root/plat_keystore2_key_contexts:$(TARGET_COPY_OUT_RECOVERY)/root/plat_keystore2_key_contexts
+
+PRODUCT_COPY_FILES += $(RECOVERY_CRYPTO_FILES)
