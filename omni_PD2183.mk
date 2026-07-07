@@ -27,3 +27,19 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="vext_k6983v1_64-user 12 SP1A.210812.003 compiler260420142447 release-keys"
 
 BUILD_FINGERPRINT := vivo/PD2183/PD2183:12/SP1A.210812.003/compiler260420142447:user/release-keys
+
+# Recovery root files (kernel modules, init scripts, MTK utils)
+RECOVERY_ROOT_FILES := \
+    $(DEVICE_PATH)/recovery/root/lib/modules/modules.load.recovery:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.load.recovery \
+    $(DEVICE_PATH)/recovery/root/init.recovery.mt6983.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6983.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.platform.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.platform.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.svc.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.svc.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.service.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.service.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.touch.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.touch.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.hlthchrg.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.hlthchrg.rc \
+    $(DEVICE_PATH)/recovery/root/init.recovery.ldconfig.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.ldconfig.rc \
+    $(DEVICE_PATH)/recovery/root/mtk-plpath-utils.rc:$(TARGET_COPY_OUT_RECOVERY)/root/mtk-plpath-utils.rc \
+    $(DEVICE_PATH)/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/servicemanager.recovery.rc
+
+PRODUCT_COPY_FILES += $(RECOVERY_ROOT_FILES)
