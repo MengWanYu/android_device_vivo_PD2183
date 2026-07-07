@@ -30,11 +30,9 @@ BUILD_FINGERPRINT := vivo/PD2183/PD2183:12/SP1A.210812.003/compiler260420142447:
 
 # === Decryption stack (from official 13.1.10.3 recovery) ===
 # KeyMint + Gatekeeper + Trustonic TEE + Keystore2 + vivo guardianangle
-# NOTE: android.hardware.keymaster@3.0/4.0/4.1.so are REMOVED —
-#       TW_INCLUDE_CRYPTO=true builds them from AOSP source, causing duplicate target error.
-# NOTE: libkeymaster_messages.so, libkeymaster_portable.so,
-#       libpuresoftkeymasterdevice.so, libsoftkeymasterdevice.so are REMOVED —
-#       they are part of TWRP's standard crypto module.
+# REMOVED (TWRP builds from source): keymaster@3.0/4.0/4.1, libkeymaster_*,
+#   libsoftkeymasterdevice, libpuresoftkeymasterdevice, libgatekeeper,
+#   gatekeeper@1.0 (both system+ vendor), android.system.wifi.keystore@1.0
 RECOVERY_CRYPTO_FILES := \
     device/vivo/PD2183/recovery/root/system/bin/servicemanager:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/servicemanager \
     device/vivo/PD2183/recovery/root/system/bin/hwservicemanager:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/hwservicemanager \
@@ -60,11 +58,7 @@ RECOVERY_CRYPTO_FILES := \
     device/vivo/PD2183/recovery/root/system/lib64/libkeystore-engine.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-engine.so \
     device/vivo/PD2183/recovery/root/system/lib64/libkeystore-engine-wifi-hidl.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-engine-wifi-hidl.so \
     device/vivo/PD2183/recovery/root/system/lib64/libkeystore-wifi-hidl.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore-wifi-hidl.so \
-    device/vivo/PD2183/recovery/root/system/lib64/libgatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libgatekeeper.so \
-    device/vivo/PD2183/recovery/root/system/lib64/android.hardware.gatekeeper@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.hardware.gatekeeper@1.0.so \
-    device/vivo/PD2183/recovery/root/system/lib64/android.system.wifi.keystore@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/android.system.wifi.keystore@1.0.so \
     device/vivo/PD2183/recovery/root/system/lib64/libvivogatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libvivogatekeeper.so \
-    device/vivo/PD2183/recovery/root/vendor/lib64/android.hardware.gatekeeper@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/android.hardware.gatekeeper@1.0.so \
     device/vivo/PD2183/recovery/root/vendor/lib64/libkeymaster4.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/libkeymaster4.so \
     device/vivo/PD2183/recovery/root/vendor/lib64/libkeymaster41.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/libkeymaster41.so \
     device/vivo/PD2183/recovery/root/vendor/lib64/vendor.vivo.hardware.wifi.keystore@1.0.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/vendor.vivo.hardware.wifi.keystore@1.0.so \
