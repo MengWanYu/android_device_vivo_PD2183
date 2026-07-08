@@ -45,3 +45,6 @@ RECOVERY_ROOT_FILES := \
     device/vivo/PD2183/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/servicemanager.recovery.rc
 
 PRODUCT_COPY_FILES += $(RECOVERY_ROOT_FILES)
+
+# Ensure libresetprop is built and included in recovery ramdisk
+PRODUCT_PACKAGES += libresetprop
