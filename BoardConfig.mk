@@ -104,6 +104,9 @@ PLATFORM_VERSION := 16.1.0
 # Recovery kernel modules (MTK UFS/MMC drivers are modules, not built-in)
 BOARD_RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*.ko)
 
+# Allow ELF prebuilts in PRODUCT_COPY_FILES (needed for decryption stack binaries)
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
