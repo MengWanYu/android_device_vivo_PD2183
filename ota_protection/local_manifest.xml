@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Override bootable/recovery with OTA-protection fork -->
+  <remove-project name="TeamWin/android_bootable_recovery" />
+  <project name="MengWanYu/android_bootable_recovery"
+          path="bootable/recovery"
+          remote="github"
+          revision="android-12.1" />
+</manifest>
